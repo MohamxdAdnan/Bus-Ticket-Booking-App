@@ -5,15 +5,19 @@ import com.org.OnlineBusTicketBookingApplication.Entity.Passenger;
 import com.org.OnlineBusTicketBookingApplication.Repository.PassengerRepository;
 import com.org.OnlineBusTicketBookingApplication.Service.PassengerService;
 import com.org.OnlineBusTicketBookingApplication.exception.ResourceNotFoundException;
+import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.stereotype.Service;
 
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Service
+@AllArgsConstructor
 public class PassengerServiceImpl implements PassengerService {
-    PassengerRepository passengerRepository;
-    ModelMapper modelMapper;
+    private PassengerRepository passengerRepository;
+    private ModelMapper modelMapper;
 
     @Override
     public PassengerDto createPassenger(PassengerDto passengerDto) {

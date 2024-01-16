@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Set;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -23,4 +25,11 @@ public class Passenger {
     private String email;
     @Column(nullable = false)
     private String password;
+
+
+    @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @JoinTable(name = "passenger_roles",
+            joinColumns = @JoinColumn(name = "passenger_id",referencedColumnName = "passengerId"),
+            inverseJoinColumns = @JoinColumn(name = "role_id",referencedColumnName = "id"))
+    private Set<Role> roles;
 }

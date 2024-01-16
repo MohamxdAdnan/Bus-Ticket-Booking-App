@@ -5,14 +5,18 @@ import com.org.OnlineBusTicketBookingApplication.Entity.Role;
 import com.org.OnlineBusTicketBookingApplication.Repository.RoleRepository;
 import com.org.OnlineBusTicketBookingApplication.Service.RoleService;
 import com.org.OnlineBusTicketBookingApplication.exception.ResourceNotFoundException;
+import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Service
+@AllArgsConstructor
 public class RoleServiceImpl implements RoleService {
-    RoleRepository roleRepository;
-    ModelMapper modelMapper;
+    private RoleRepository roleRepository;
+    private ModelMapper modelMapper;
 
     @Override
     public RoleDto createRole(RoleDto roleDto) {
@@ -25,7 +29,7 @@ public class RoleServiceImpl implements RoleService {
     public RoleDto updateRole(RoleDto roleDto, Long roleId) {
         Role role = roleRepository.findById(roleId)
                 .orElseThrow(() -> new ResourceNotFoundException("Role not found with id:" + roleId));
-        role.setRole(roleDto.getRole());
+        role.setName(roleDto.getName());
 
 
         Role newRole = roleRepository.save(role);
