@@ -56,6 +56,15 @@ public class BusServiceImpl implements BusService {
     }
 
     @Override
+    public List<BusDto> getBusByFromAndTo(String fromDestination,String toDestination) {
+        List<Bus> buses = busRepository.findByFromDestinationAndToDestination(fromDestination, toDestination);
+
+        List<BusDto> busDtos = buses.stream()
+                .map((bus)->modelMapper.map(bus, BusDto.class)).collect(Collectors.toList());
+        return busDtos;
+    }
+
+    @Override
     public List<BusDto> getAllBuses() {
         List<Bus> allBuses = busRepository.findAll();
         List<BusDto> allBusDtos = allBuses.stream()

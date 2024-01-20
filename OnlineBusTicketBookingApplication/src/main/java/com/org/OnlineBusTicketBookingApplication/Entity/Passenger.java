@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
 import java.util.Set;
 
 @Data
@@ -25,6 +26,14 @@ public class Passenger {
     private String email;
     @Column(nullable = false)
     private String password;
+    @Column(nullable = false)
+    private String age;
+    @Column(nullable = false)
+    private String gender;
+
+    @OneToMany(mappedBy = "passenger")
+    private List<Booking> bookingHistory;
+
 
 
     @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)

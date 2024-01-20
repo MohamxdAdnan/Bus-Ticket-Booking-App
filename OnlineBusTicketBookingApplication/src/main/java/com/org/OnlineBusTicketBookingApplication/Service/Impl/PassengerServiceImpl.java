@@ -32,6 +32,8 @@ public class PassengerServiceImpl implements PassengerService {
                 .orElseThrow(() -> new ResourceNotFoundException("Passenger not found with id:" + passengerId));
         passenger.setFirstName(passengerDto.getFirstName());
         passenger.setLastName(passengerDto.getLastName());
+        passenger.setAge(passengerDto.getAge());
+        passenger.setGender(passengerDto.getGender());
         passenger.setEmail(passengerDto.getEmail());
         passenger.setPassword(passengerDto.getPassword());
 

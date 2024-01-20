@@ -28,5 +28,9 @@ public class Bus {
     private String fromDestination;
     @Column(nullable = false)
     private String departureTime;
+    @Column(nullable = false)
+    private Long totalSeats;
+    @Column(nullable = false)
+    private Long availableSeats;
 
 }

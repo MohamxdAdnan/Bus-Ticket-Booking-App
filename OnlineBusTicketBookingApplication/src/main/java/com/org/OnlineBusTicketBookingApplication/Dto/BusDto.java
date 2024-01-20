@@ -41,5 +41,7 @@ public class BusDto {
             description = "Departure Time"
     )
     private String departureTime;
+    private Long totalSeats;
+    private Long availableSeats;
 
 }

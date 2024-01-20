@@ -61,6 +61,19 @@ public class BusController {
     }
 
     @Operation(
+            summary = "Get All Bus Resource by From And To destination"
+    )
+    @ApiResponse(
+            responseCode = "200",
+            description = "HTTP Status 200 OK"
+    )
+    @GetMapping("{from}/{to}")
+    public ResponseEntity<List<BusDto>> getBusesByFromAndTo(@PathVariable String fromDestination,@PathVariable String toDestination) {
+        List<BusDto> buses = busService.getBusByFromAndTo(fromDestination,toDestination);
+        return new ResponseEntity<>(buses, HttpStatus.OK);
+    }
+
+    @Operation(
             summary = "Delete Bus Resource"
     )
     @ApiResponse(

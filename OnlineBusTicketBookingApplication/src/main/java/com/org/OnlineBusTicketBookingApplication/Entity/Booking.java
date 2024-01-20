@@ -30,4 +30,8 @@ public class Booking {
     private int ticketCount;
     @Column(nullable = false)
     private Double totalPrice;
+
+    @ManyToOne
+    @JoinColumn(name="passenger_id")
+    private Passenger passenger;
 }
